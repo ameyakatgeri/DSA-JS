@@ -11,7 +11,7 @@ class BinarySearchTree {
         this.root = null
     }
 
-    // convert given key to node and insert at root if root is empty
+    // insertion in binary tree : first convert given key to node and insert at root if root is empty
     insert(key) {
         const newNode = new BSTNode(key)
         if (this.root === null) {
