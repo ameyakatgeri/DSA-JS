@@ -61,4 +61,8 @@ myStack.push(5)
 myStack.push(6)
 myStack.pop()
 
+myStack.isEmpty()
+
+myStack.size()
+
 console.log(myStack.printStack());
