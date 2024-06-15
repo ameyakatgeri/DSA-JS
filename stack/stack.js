@@ -45,8 +45,10 @@ class Stack{
         let str = ""
         for(let i = 0; i < this.stack.length; i++) {
             str += this.stack[i] + "\n"
-            return str    // best practice is to not log it, just return it
+            
         }
+
+        return str    // best practice is to not log it, just return it
     }
 
 }
