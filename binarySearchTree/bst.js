@@ -1,5 +1,5 @@
 class BSTNode {
-    constructor(key) {
+    constructor(key) { // (key, left = null, right = null) another way of this.left = left and this.right = right
         this.key = key
         this.left = null
         this.right = null
@@ -11,7 +11,9 @@ class BinarySearchTree {
         this.root = null
     }
 
-    // insertion in binary tree : first convert given key to node and insert at root if root is empty
+
+
+    // insertion in bst : first convert given key to node and insert at root if root is empty
     insert(key) {
         const newNode = new BSTNode(key)
         if (this.root === null) {
@@ -37,6 +39,45 @@ class BinarySearchTree {
                 this.insertNode(node.right, newNode)
             }
         }
+    }
+
+
+
+    // deletion in bst
+    delete(key) {
+        this.root = this.deleteNode(this.root, key)
+    }
+
+    deleteNode(node, key) {   // node -> root
+        if (node === null) {
+            return null
+        }
+
+        if (key < node.key) {
+            node.left = this.deleteNode(node.left, key)
+        } else if (key > node.key) {
+            node.right = this.deleteNode(node.right, key)
+        } else {
+            if (node.left === null && node.right === null) {
+                return null
+            } else if (node.left === null) {
+                return node.right
+            } else if (node.right === null) {
+                return node.left
+            } else {
+                let tempNode = this.findMinNode(node.right)
+                node.key = tempNode.key
+                node.right = this.deleteNode(node.right, tempNode.key)
+            }
+        }
+        return node
+    }
+
+    findMinNode(node) {
+        while (node.left !== null) {
+            node = node.left
+        }
+        return node
     }
 
 }
