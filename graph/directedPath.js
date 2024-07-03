@@ -19,3 +19,23 @@ function hasPathDFS(graph, start, dest) {
     }
     return false
 }
+
+
+function hasPathBFS(graph, start, dest) {
+    const queue = [start]
+    const visited = new Set()
+
+    while (queue.length > 0) {
+        const node = queue.shift()
+
+        if (node === dest) return true
+        if (!visited.has(node)) {
+            visited.add(node)
+
+            for (const neighbour of graph[node]) {
+                queue.push(neighbour)
+            }
+        }
+    }
+    return false
+}
