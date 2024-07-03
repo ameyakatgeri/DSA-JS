@@ -1,3 +1,4 @@
+// dfs approach
 function hasPathDFS(graph, start, dest) {
     const stack = [start]
     const visited = new Set()
@@ -21,6 +22,7 @@ function hasPathDFS(graph, start, dest) {
 }
 
 
+// bfs approach
 function hasPathBFS(graph, start, dest) {
     const queue = [start]
     const visited = new Set()
@@ -35,6 +37,19 @@ function hasPathBFS(graph, start, dest) {
             for (const neighbour of graph[node]) {
                 queue.push(neighbour)
             }
+        }
+    }
+    return false
+}
+
+
+//recursive approach
+function hasPathRecursive(graph, start, dest) {
+    if (start === dest) return true
+
+    for (const neighbour of graph[start]) {
+        if (hasPathRecursive(graph, neighbour, dest === true)) {
+            return true
         }
     }
     return false
